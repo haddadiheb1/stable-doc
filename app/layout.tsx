@@ -14,7 +14,7 @@ const ibmPlexMono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "StableDoc - Direct your document",
+  title: "DocPilot - Direct your document",
   description: "Prompt-driven documents with deterministic formatting and stable pagination.",
 };
 

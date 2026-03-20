@@ -1,6 +1,5 @@
 import { CoreInteractionSim } from "@/components/core-interaction-sim";
 import { HeroDocDemo } from "@/components/hero-doc-demo";
-import { Compare } from "@/components/ui/compare";
 import { HoverBorderGradient } from "@/components/ui/hover-border-gradient";
 import { Spotlight } from "@/components/ui/spotlight";
 import { TextGenerateEffect } from "@/components/ui/text-generate-effect";
@@ -80,41 +79,51 @@ function CleanDocument() {
     </div>
   );
 }
-
-const deviceSnippets = [
-  {
-    device: "Laptop",
-    hash: 821,
-    lines: [
-      "Executive Summary: 35% faster turnaround target.",
-      "Timeline: Kickoff Apr 10, Pilot Jun 01, Rollout Aug 15.",
-      "Budget variance: -12% from current baseline.",
-    ],
-  },
-  {
-    device: "Tablet",
-    hash: 822,
-    lines: [
-      "Executive Summary: 35% faster turnaround target.",
-      "Timeline: Kickoff Apr 10, Pilot Jun 01, Rollout Aug 15.",
-      "Budget variance: -12% from current baseline.",
-    ],
-  },
-  {
-    device: "Phone",
-    hash: 823,
-    lines: [
-      "Executive Summary: 35% faster turnaround target.",
-      "Timeline: Kickoff Apr 10, Pilot Jun 01, Rollout Aug 15.",
-      "Budget variance: -12% from current baseline.",
-    ],
-  },
-];
-
 export default function Home() {
   return (
     <main className="relative overflow-hidden bg-[linear-gradient(180deg,#0b1020_0%,#0c1224_32%,#f7f6f2_32.1%,#f7f6f2_100%)] text-slate-100">
       <Spotlight className="top-[-10rem]" fill="#ff6a3d" />
+
+      <header className="relative z-20 border-b border-white/10 bg-[#0b1020]/80 backdrop-blur">
+        <div className="mx-auto grid w-full max-w-6xl grid-cols-[1fr_auto_1fr] items-center px-5 py-4 md:px-8">
+          <a href="#" className="w-fit text-lg font-semibold tracking-tight text-white">
+            DocPilot
+          </a>
+
+          <nav className="hidden items-center gap-7 md:flex">
+            <a href="#about" className="text-sm font-medium text-slate-200 transition hover:text-white">
+              About
+            </a>
+            <a href="#pricing" className="text-sm font-medium text-slate-200 transition hover:text-white">
+              Pricing
+            </a>
+            <a href="#faq" className="text-sm font-medium text-slate-200 transition hover:text-white">
+              FAQ
+            </a>
+          </nav>
+
+          <div className="flex justify-end">
+            <a
+              href="#final-cta"
+              className="inline-flex items-center justify-center rounded-full border border-white/35 bg-white/10 px-6 py-2.5 text-sm font-semibold text-white backdrop-blur-xl shadow-[inset_0_1px_0_rgba(255,255,255,0.35),0_14px_30px_-18px_rgba(2,6,23,0.9)] transition duration-200 hover:border-white/55 hover:bg-white/20 hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.5),0_18px_34px_-16px_rgba(2,6,23,0.9)]"
+            >
+              Get Started
+            </a>
+          </div>
+        </div>
+
+        <div className="mx-auto flex w-full max-w-6xl items-center justify-center gap-6 px-5 pb-4 md:hidden">
+          <a href="#about" className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-300">
+            About
+          </a>
+          <a href="#pricing" className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-300">
+            Pricing
+          </a>
+          <a href="#faq" className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-300">
+            FAQ
+          </a>
+        </div>
+      </header>
 
       <section className="relative z-10 mx-auto w-full max-w-6xl px-5 pb-20 pt-12 md:px-8 md:pb-28 md:pt-16">
         <div className="grid items-center gap-10 lg:grid-cols-[0.96fr_1.04fr]">
@@ -142,15 +151,58 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="relative z-10 bg-[#f7f6f2] py-20 text-slate-900 md:py-24">
+      <section id="about" className="relative z-10 bg-[#f7f6f2] py-20 text-slate-900 md:py-24">
         <div className="mx-auto w-full max-w-6xl px-5 md:px-8">
-          <h2 className="max-w-2xl text-3xl font-semibold tracking-tight md:text-4xl">Same content. Very different outcome.</h2>
-          <p className="mt-3 max-w-2xl text-slate-600">
-            One workflow creates chaos. The other creates clean, deterministic documents.
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">Problem to Solution</p>
+          <h2 className="mt-2 max-w-4xl text-3xl font-semibold tracking-tight md:text-5xl">
+            From formatting chaos to instant structure.
+          </h2>
+          <p className="mt-3 max-w-3xl text-sm text-slate-700 md:text-base">
+            One glance tells the story: manual editing breaks documents, prompt direction keeps them clean.
           </p>
-          <div className="mt-8">
-            <Compare first={<MessyDocument />} second={<CleanDocument />} className="min-h-[20rem]" />
+
+          <div className="mt-8 grid gap-5 lg:grid-cols-2">
+            <article className="rounded-3xl border border-rose-200 bg-white p-4 shadow-[0_18px_34px_-30px_rgba(127,29,29,.35)]">
+              <div className="mb-3 flex items-center justify-between">
+                <p className="text-xs font-semibold uppercase tracking-[0.16em] text-rose-700">Problem</p>
+                <span className="rounded-full bg-rose-100 px-2 py-1 text-[10px] font-semibold text-rose-800">Unpredictable layout</span>
+              </div>
+              <div className="rounded-2xl border border-rose-200 bg-rose-50/70 p-2">
+                <MessyDocument />
+              </div>
+              <div className="mt-3 flex flex-wrap gap-2 text-[11px] font-medium">
+                <span className="rounded-full border border-rose-200 bg-rose-50 px-2.5 py-1 text-rose-800">Page shifts</span>
+                <span className="rounded-full border border-rose-200 bg-rose-50 px-2.5 py-1 text-rose-800">Table breaks</span>
+                <span className="rounded-full border border-rose-200 bg-rose-50 px-2.5 py-1 text-rose-800">Fonts drift</span>
+                <span className="rounded-full border border-rose-200 bg-rose-50 px-2.5 py-1 text-rose-800">Device mismatch</span>
+              </div>
+            </article>
+
+            <article className="rounded-3xl border border-emerald-200 bg-white p-4 shadow-[0_18px_34px_-30px_rgba(6,95,70,.35)]">
+              <div className="mb-3 flex items-center justify-between">
+                <p className="text-xs font-semibold uppercase tracking-[0.16em] text-emerald-700">Solution</p>
+                <span className="rounded-full bg-emerald-100 px-2 py-1 text-[10px] font-semibold text-emerald-800">Deterministic output</span>
+              </div>
+              <div className="rounded-2xl border border-emerald-200 bg-emerald-50/70 p-2">
+                <CleanDocument />
+              </div>
+              <div className="mt-3 flex flex-wrap gap-2 text-[11px] font-medium">
+                <span className="rounded-full border border-emerald-200 bg-emerald-50 px-2.5 py-1 text-emerald-800">Layout locked</span>
+                <span className="rounded-full border border-emerald-200 bg-emerald-50 px-2.5 py-1 text-emerald-800">Spacing stable</span>
+                <span className="rounded-full border border-emerald-200 bg-emerald-50 px-2.5 py-1 text-emerald-800">Tables fit</span>
+                <span className="rounded-full border border-emerald-200 bg-emerald-50 px-2.5 py-1 text-emerald-800">Same on all devices</span>
+              </div>
+            </article>
           </div>
+
+          <article className="mt-6 rounded-3xl border border-slate-200 bg-white p-5">
+            <h3 className="text-2xl font-semibold tracking-tight">Stop editing documents. Start directing them.</h3>
+            <div className="mt-3 grid gap-2 text-sm text-slate-700 md:grid-cols-3">
+              <p className="rounded-xl border border-slate-200 bg-slate-50 px-3 py-2">&quot;Add intro&quot; → clean section appears</p>
+              <p className="rounded-xl border border-slate-200 bg-slate-50 px-3 py-2">&quot;Add table&quot; → fits instantly</p>
+              <p className="rounded-xl border border-slate-200 bg-slate-50 px-3 py-2">&quot;Shorten this&quot; → still formatted</p>
+            </div>
+          </article>
         </div>
       </section>
 
@@ -252,51 +304,158 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-[#f7f6f2] py-16 text-slate-900 md:py-24">
+      <section id="pricing" className="bg-[#f7f6f2] py-16 text-slate-900 md:py-24">
         <div className="mx-auto w-full max-w-6xl px-5 md:px-8">
-          <h2 className="text-3xl font-semibold tracking-tight md:text-4xl">What you see is what everyone sees</h2>
-          <p className="mt-3 max-w-2xl text-slate-600">
-            The same document renders identically across laptop, tablet, and phone.
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">Pricing</p>
+          <h2 className="mt-2 text-3xl font-semibold tracking-tight md:text-4xl">Pay for zero formatting pain</h2>
+          <p className="mt-3 max-w-3xl text-sm text-slate-700 md:text-base">
+            Simple and predictable pricing tied to how often you create documents. No token math. No per-action billing anxiety.
           </p>
-          <div className="mt-8 grid gap-4 md:grid-cols-3">
-            {deviceSnippets.map((item) => (
-              <article key={item.device} className="rounded-3xl border border-slate-200 bg-white p-4 shadow-[0_22px_40px_-36px_rgba(17,24,39,.9)]">
-                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">{item.device}</p>
-                <div className="mt-3 rounded-xl border border-slate-200 bg-slate-50 p-3">
-                  <h4 className="text-sm font-semibold text-slate-800">Q2 Client Proposal</h4>
-                  <div className="mt-2 space-y-1 text-[11px] leading-relaxed text-slate-700">
-                    {item.lines.map((line) => (
-                      <p key={`${item.device}-${line}`}>{line}</p>
-                    ))}
-                  </div>
-                  <div className="mt-3 rounded-md border border-emerald-200 bg-emerald-50 px-2 py-1 text-[11px] text-emerald-800">
-                    Render hash match #{item.hash}
-                  </div>
-                </div>
-              </article>
-            ))}
+
+          <div className="mt-5 flex flex-wrap gap-2 text-xs font-semibold uppercase tracking-[0.14em] text-slate-600">
+            <span className="rounded-full border border-slate-300 bg-white px-3 py-1">Simple</span>
+            <span className="rounded-full border border-slate-300 bg-white px-3 py-1">Predictable</span>
+            <span className="rounded-full border border-slate-300 bg-white px-3 py-1">Usage-tied</span>
           </div>
-          <div className="mt-6 inline-flex items-center rounded-full border border-emerald-300 bg-emerald-50 px-4 py-2 text-sm font-medium text-emerald-800">
-            Layout locked across devices
+
+          <div className="mt-8 grid gap-4 md:grid-cols-2">
+            <article className="rounded-3xl border border-slate-200 bg-white p-6 shadow-[0_24px_44px_-38px_rgba(15,23,42,.9)]">
+              <p className="text-sm font-semibold uppercase tracking-[0.16em] text-slate-500">Free</p>
+              <p className="mt-2 text-3xl font-semibold tracking-tight text-slate-900">$0</p>
+              <p className="mt-1 text-sm text-slate-600">Try it. See how easy document creation should feel.</p>
+              <ul className="mt-5 space-y-2 text-sm text-slate-700">
+                {[
+                  "3 documents per month",
+                  "Max 10 AI actions per document",
+                  "PDF export with watermark",
+                  "Limited templates",
+                ].map((point) => (
+                  <li key={`free-${point}`} className="rounded-lg border border-slate-200 bg-slate-50 px-3 py-2">
+                    {point}
+                  </li>
+                ))}
+              </ul>
+              <a
+                href="#final-cta"
+                className="mt-5 inline-flex w-full items-center justify-center rounded-xl border border-slate-300 bg-white px-4 py-2.5 text-sm font-semibold text-slate-900 transition hover:bg-slate-50"
+              >
+                Get Started
+              </a>
+            </article>
+
+            <article className="relative rounded-3xl border border-emerald-300 bg-white p-6 shadow-[0_28px_54px_-38px_rgba(6,95,70,.7)]">
+              <span className="absolute right-4 top-4 rounded-full border border-emerald-300 bg-emerald-50 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-emerald-800">
+                Most popular
+              </span>
+              <p className="text-sm font-semibold uppercase tracking-[0.16em] text-emerald-700">Pro</p>
+              <p className="mt-2 text-3xl font-semibold tracking-tight text-slate-900">
+                $19<span className="text-base font-medium text-slate-600">/month</span>
+              </p>
+              <p className="mt-1 text-sm font-medium text-emerald-800">or $159/year (save ~30%)</p>
+              <p className="mt-1 text-sm text-slate-600">For people who create documents regularly and want zero friction.</p>
+              <ul className="mt-5 space-y-2 text-sm text-slate-700">
+                {[
+                  "Unlimited documents",
+                  "Unlimited AI actions",
+                  "Clean PDF & DOCX export (no watermark)",
+                  "Advanced formatting control",
+                  "Priority generation speed",
+                ].map((point) => (
+                  <li key={`pro-${point}`} className="rounded-lg border border-emerald-200 bg-emerald-50/50 px-3 py-2">
+                    {point}
+                  </li>
+                ))}
+              </ul>
+              <a
+                href="#final-cta"
+                className="mt-5 inline-flex w-full items-center justify-center rounded-xl border border-emerald-600 bg-emerald-600 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-emerald-500"
+              >
+                Get Started
+              </a>
+            </article>
           </div>
         </div>
       </section>
 
+      <section id="faq" className="bg-[#f7f6f2] py-16 text-slate-900 md:py-24">
+        <div className="mx-auto w-full max-w-6xl px-5 md:px-8">
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">FAQ</p>
+          <h2 className="mt-2 text-3xl font-semibold tracking-tight md:text-4xl">Answers before you start</h2>
+          <div className="mt-8 grid gap-4">
+            {[
+              {
+                q: "What does DocPilot actually do?",
+                a: "DocPilot lets you describe the document you want in plain language, then generates a polished file with stable structure, spacing, and pagination.",
+              },
+              {
+                q: "Will output stay consistent across devices?",
+                a: "Yes. Layout rules and pagination are locked to keep rendering identical across laptop, tablet, and phone.",
+              },
+              {
+                q: "What file outputs are supported?",
+                a: "You can export to PDF and DOCX for sharing. Free plans include watermarking, while Pro exports are clean and client-ready.",
+              },
+              {
+                q: "How fast can I get my first document?",
+                a: "Most users create their first usable draft within minutes by starting from a simple prompt and refining in a few guided actions.",
+              },
+            ].map((item) => (
+              <article key={item.q} className="rounded-2xl border border-slate-200 bg-white p-5">
+                <h3 className="text-lg font-semibold text-slate-900">{item.q}</h3>
+                <p className="mt-2 text-sm text-slate-700">{item.a}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section> 
       <section id="final-cta" className="bg-[#101828] py-20 text-white md:py-24">
         <div className="mx-auto w-full max-w-4xl px-5 text-center md:px-8">
           <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#ffb199]">Final step</p>
-          <h2 className="mt-3 text-4xl font-semibold tracking-tight md:text-5xl">Stop formatting. Start shipping polished documents.</h2>
-          <p className="mx-auto mt-4 max-w-2xl text-slate-300">
-            Prompt once, get a clean, consistent, share-ready document every time.
-          </p>
+          <h2 className="mt-3 text-4xl font-semibold tracking-tight md:text-5xl">Create your next document without touching formatting</h2>
+          <p className="mx-auto mt-4 max-w-2xl text-slate-300">No more frustration. No more wasted hours.</p>
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <HoverBorderGradient as="a" href="#">
-              Start Free
+            <HoverBorderGradient as="a" href="#final-cta">
+              Try it now
             </HoverBorderGradient>
           </div>
-          <p className="mt-4 text-sm text-slate-400">No credit card required.</p>
         </div>
       </section>
+
+      <footer className="border-t border-white/10 bg-[#0b1020] py-12 text-slate-200">
+        <div className="mx-auto grid w-full max-w-6xl gap-10 px-5 md:grid-cols-[1.2fr_1fr_1fr] md:px-8">
+          <div>
+            <p className="text-lg font-semibold text-white">DocPilot</p>
+            <p className="mt-2 max-w-xs text-sm text-slate-400">Direct your document workflow with predictable, share-ready output.</p>
+          </div>
+
+          <div>
+            <p className="text-sm font-semibold uppercase tracking-[0.16em] text-slate-300">Company</p>
+            <div className="mt-3 flex flex-col gap-2 text-sm">
+              <a href="#about" className="text-slate-300 transition hover:text-white">
+                About
+              </a>
+              <a href="#pricing" className="text-slate-300 transition hover:text-white">
+                Pricing
+              </a>
+              <a href="#faq" className="text-slate-300 transition hover:text-white">
+                FAQ
+              </a>
+            </div>
+          </div>
+
+          <div>
+            <p className="text-sm font-semibold uppercase tracking-[0.16em] text-slate-300">Legal</p>
+            <div className="mt-3 flex flex-col gap-2 text-sm">
+              <a href="#" className="text-slate-300 transition hover:text-white">
+                Privacy Policy
+              </a>
+              <a href="#" className="text-slate-300 transition hover:text-white">
+                Terms of Services
+              </a>
+            </div>
+          </div>
+        </div>
+      </footer>
     </main>
   );
 }
